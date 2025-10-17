@@ -1,0 +1,8 @@
+{
+  "message": {
+    "hello": "Hello World, And Hi {name}"
+  },
+  "auth": {
+    "sign_in": "Sign In"
+  }
+}
