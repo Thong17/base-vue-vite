@@ -1,10 +1,8 @@
-import { addIcon, type IconifyIcon } from '@iconify/vue'
+import { addCollection } from '@iconify/vue'
 import solarIcons from './local-icons.json'
 
-function registerIcons(prefix: string, icons: Record<string, IconifyIcon>) {
-  for (const [key, icon] of Object.entries(icons)) {
-    addIcon(`${prefix}:${key}`, icon)
-  }
+function registerIcons() {
+  addCollection(solarIcons)
 }
 
-registerIcons(solarIcons.prefix, solarIcons.icons)
+registerIcons()
