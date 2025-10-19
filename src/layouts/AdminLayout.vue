@@ -3,21 +3,33 @@
   <div
     class="transition-all"
     :style="{
-      width: appStore.isSidebarOpen ? 'calc(100vw - 270px)' : 'calc(100vw - 70px)',
-      marginLeft: appStore.isSidebarOpen ? '270px' : '70px',
+      width: appStore.isSidebarOpen
+        ? `calc(100vw - ${SIDEBAR_EXPAND_WIDTH}px)`
+        : `calc(100vw - ${SIDEBAR_COLLAPSE_WIDTH}px)`,
+      marginLeft: appStore.isSidebarOpen ? `${SIDEBAR_EXPAND_WIDTH}px` : `${SIDEBAR_COLLAPSE_WIDTH}px`,
     }"
   >
     <navbar>
       <slot name="navbar"></slot>
     </navbar>
-    <main>
+    <main
+      :style="{
+        minHeight: `calc(100vh - ${NAVBAR_HEIGHT + FOOTER_HEIGHT}px)`,
+      }"
+    >
       <router-view />
     </main>
-    <footer class="grid place-items-center">Admin Footer</footer>
+    <footer :style="{ height: `${FOOTER_HEIGHT}px` }" class="grid place-items-center">Admin Footer</footer>
   </div>
 </template>
 
 <script setup lang="ts">
+  import {
+    FOOTER_HEIGHT,
+    NAVBAR_HEIGHT,
+    SIDEBAR_COLLAPSE_WIDTH,
+    SIDEBAR_EXPAND_WIDTH,
+  } from '@/components/layouts/constant'
   import Navbar from '@/components/layouts/Navbar.vue'
   import Sidebar from '@/components/layouts/Sidebar.vue'
   import { useAppStore } from '@/stores/app'
@@ -28,12 +40,3 @@
 <script lang="ts">
   export default {}
 </script>
-
-<style scoped>
-  main {
-    min-height: calc(100vh - 140px);
-  }
-  footer {
-    height: 70px;
-  }
-</style>

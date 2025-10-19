@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-background px-5">
-    <div class="navbar border-b flex justify-between items-center">
+    <div class="border-b flex justify-between items-center" :class="`h-[${NAVBAR_HEIGHT}px]`">
       <img :src="CONNECT_VENDOR_ICON" alt="connect vendor" width="190px" class="px-3" />
       <div class="flex gap-1 items-center">
         <slot></slot>
@@ -40,6 +40,7 @@
   import EN_ICON from '@/assets/icons/en.png'
   import CONNECT_VENDOR_ICON from '@/assets/logos/connect-vendor.png'
   import AppProfile from '@/components/core/AppProfile.vue'
+  import { NAVBAR_HEIGHT } from './constant'
 
   const ThemeOptions: IDropdownProps<'light' | 'dark' | 'auto'>['options'] = [
     { label: 'Light', value: 'light' },
@@ -67,9 +68,3 @@
 <script lang="ts">
   export default {}
 </script>
-
-<style scoped>
-  .navbar {
-    height: 70px;
-  }
-</style>

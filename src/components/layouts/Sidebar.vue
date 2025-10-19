@@ -1,6 +1,9 @@
 <template>
-  <div class="sidebar bg-background transition-all border-r" :class="appStore.isSidebarOpen ? 'w-[270px]' : 'w-[70px]'">
-    <div class="w-[70px] h-[70px] grid place-items-center">
+  <div
+    class="sidebar bg-background transition-all border-r"
+    :class="appStore.isSidebarOpen ? `w-[${SIDEBAR_EXPAND_WIDTH}px]` : `w-[${SIDEBAR_COLLAPSE_WIDTH}]`"
+  >
+    <div class="grid place-items-center" :class="`w-[${SIDEBAR_COLLAPSE_WIDTH}px] h-[${SIDEBAR_COLLAPSE_WIDTH}px]`">
       <Button variant="ghost" class="rounded-full" @click="appStore.toggleSidebar()">
         <Icon
           icon="local:burger"
@@ -23,6 +26,7 @@
   import { Icon } from '@iconify/vue'
   import { Button } from '@/components/ui/button'
   import { useAppStore } from '@/stores/app'
+  import { SIDEBAR_COLLAPSE_WIDTH, SIDEBAR_EXPAND_WIDTH } from './constant'
 
   const appStore = useAppStore()
 </script>
