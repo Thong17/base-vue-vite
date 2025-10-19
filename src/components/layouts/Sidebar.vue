@@ -19,6 +19,15 @@
         />
       </Button>
     </div>
+    <div
+      v-for="item in SIDEBAR_ITEMS"
+      :key="item.path"
+      class="flex space-between items-center gap-2"
+      :class="`w-[${SIDEBAR_COLLAPSE_WIDTH}px] h-[${SIDEBAR_COLLAPSE_WIDTH}px]`"
+    >
+      <Icon v-if="item.meta?.icon" :icon="item.meta?.icon" style="width: 24px; height: 24px" />
+      <span>{{ item.meta?.title }}</span>
+    </div>
   </div>
 </template>
 
@@ -27,8 +36,12 @@
   import { Button } from '@/components/ui/button'
   import { useAppStore } from '@/stores/app'
   import { SIDEBAR_COLLAPSE_WIDTH, SIDEBAR_EXPAND_WIDTH } from './constant'
+  import { ADMIN_ROUTES } from '@/routes'
 
   const appStore = useAppStore()
+  const SIDEBAR_ITEMS = computed(() => {
+    return ADMIN_ROUTES
+  })
 </script>
 
 <script lang="ts">

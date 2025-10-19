@@ -13,6 +13,7 @@ const ROUTES: Array<RouteRecordRaw> = [
       title: MODULE_NAME.toLowerCase(),
       middleware: [],
       moduleName: MODULE_NAME,
+      icon: 'local:profile-circle',
     },
   },
 ]

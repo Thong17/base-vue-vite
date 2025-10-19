@@ -5,6 +5,8 @@ import { authGuard } from '@/middlewares/app/authGuard'
 import { hasAuth } from '@/middlewares/app/hasAuth'
 import { USER_ROUTE } from '@/modules/admin/user/routers'
 
+export const ADMIN_ROUTES = [...USER_ROUTE.ROUTES]
+
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/auth',
@@ -24,7 +26,7 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/admin',
     beforeEnter: authGuard,
     component: () => import('@/layouts/AdminLayout.vue'),
-    children: [...USER_ROUTE.ROUTES],
+    children: ADMIN_ROUTES,
   },
   {
     path: '/',
