@@ -10,9 +10,6 @@
           </span>
         </Button>
       </DropdownMenu>
-      <Button variant="ghost" class="rounded-full">
-        <Icon icon="local:bell-outline" style="width: 24px; height: 24px" />
-      </Button>
       <DropdownMenu :options="ThemeOptions" :value="mode" @change="handleThemeChange">
         <Button variant="ghost" class="rounded-full">
           <Icon
