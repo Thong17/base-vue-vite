@@ -3,7 +3,10 @@
     class="sidebar bg-background transition-all border-r"
     :style="{ width: appStore.isSidebarOpen ? `${SIDEBAR_EXPAND_WIDTH}px` : `${SIDEBAR_COLLAPSE_WIDTH}px` }"
   >
-    <div class="grid place-items-center" :class="`w-[${SIDEBAR_COLLAPSE_WIDTH}px] h-[${SIDEBAR_COLLAPSE_WIDTH}px]`">
+    <div
+      class="grid place-items-center"
+      :style="{ width: `${SIDEBAR_COLLAPSE_WIDTH}px`, height: `${SIDEBAR_COLLAPSE_WIDTH}px` }"
+    >
       <Button variant="ghost" class="rounded-full" @click="appStore.toggleSidebar()">
         <Icon
           icon="local:burger"
@@ -22,11 +25,13 @@
     <div
       v-for="item in SIDEBAR_ITEMS"
       :key="item.path"
-      class="flex space-between items-center gap-2"
-      :class="`w-[${SIDEBAR_COLLAPSE_WIDTH}px] h-[${SIDEBAR_COLLAPSE_WIDTH}px]`"
+      class="grid place-items-center"
+      :style="{ width: `${SIDEBAR_COLLAPSE_WIDTH}px`, height: `${SIDEBAR_COLLAPSE_WIDTH}px` }"
     >
-      <Icon v-if="item.meta?.icon" :icon="item.meta?.icon" style="width: 24px; height: 24px" />
-      <span>{{ item.meta?.title }}</span>
+      <router-link :to="item.path" class="flex">
+        <Icon v-if="item.meta?.icon" :icon="item.meta?.icon" style="width: 24px; height: 24px" />
+        <span v-if="appStore.isSidebarOpen">{{ item.meta?.title }}</span>
+      </router-link>
     </div>
   </div>
 </template>
