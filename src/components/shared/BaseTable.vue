@@ -1,6 +1,14 @@
 <script setup lang="ts">
   import { PropType } from 'vue'
   import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+  import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationNext,
+    PaginationPrevious,
+  } from '@/components/ui/pagination'
 
   export interface TableHeaderConfig {
     label: string
@@ -17,6 +25,21 @@
     rows: {
       type: Array as PropType<Record<string, unknown>[]>,
       required: true,
+    },
+    pageIndex: {
+      type: Number,
+      require: false,
+      default: 1,
+    },
+    totalCount: {
+      type: Number,
+      require: false,
+      default: 0,
+    },
+    rowPerPage: {
+      type: Number,
+      require: false,
+      default: 10,
     },
   })
 </script>
@@ -52,4 +75,16 @@
       </TableRow>
     </TableBody>
   </Table>
+  <Pagination v-slot="{ page }" :items-per-page="rowPerPage" :total="totalCount" :default-page="pageIndex">
+    <PaginationContent v-slot="{ items }">
+      <PaginationPrevious />
+      <template v-for="(item, index) in items" :key="index">
+        <PaginationItem v-if="item.type === 'page'" :value="item.value" :is-active="item.value === page">
+          {{ item.value }}
+        </PaginationItem>
+      </template>
+      <PaginationEllipsis :index="4" />
+      <PaginationNext />
+    </PaginationContent>
+  </Pagination>
 </template>

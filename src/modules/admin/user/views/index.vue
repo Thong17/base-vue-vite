@@ -1,7 +1,8 @@
 <template>
   <h1>{{ $t(route.meta.title ?? '') }}</h1>
-  <TestButton />
-  <BaseTable :headers="headers" :rows="invoices" />
+  <router-link to="/admin/user/create">Create</router-link>
+  <BaseTable :headers="headers" :rows="invoices" :total-count="150" />
+  <router-view />
 </template>
 
 <script setup lang="ts">
