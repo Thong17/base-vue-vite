@@ -1,7 +1,7 @@
 <template>
   <div
     class="sidebar bg-background transition-all border-r"
-    :class="appStore.isSidebarOpen ? `w-[${SIDEBAR_EXPAND_WIDTH}px]` : `w-[${SIDEBAR_COLLAPSE_WIDTH}]`"
+    :style="{ width: appStore.isSidebarOpen ? `${SIDEBAR_EXPAND_WIDTH}px` : `${SIDEBAR_COLLAPSE_WIDTH}px` }"
   >
     <div class="grid place-items-center" :class="`w-[${SIDEBAR_COLLAPSE_WIDTH}px] h-[${SIDEBAR_COLLAPSE_WIDTH}px]`">
       <Button variant="ghost" class="rounded-full" @click="appStore.toggleSidebar()">

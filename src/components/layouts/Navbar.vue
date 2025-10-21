@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-background px-5">
-    <div class="border-b flex justify-between items-center" :class="`h-[${NAVBAR_HEIGHT}px]`">
+    <div class="border-b flex justify-between items-center" :style="{ height: `${NAVBAR_HEIGHT}px` }">
       <img :src="CONNECT_VENDOR_ICON" alt="connect vendor" width="190px" class="px-3" />
       <div class="flex gap-1 items-center">
         <slot></slot>
