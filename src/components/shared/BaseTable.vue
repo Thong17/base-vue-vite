@@ -17,6 +17,8 @@
     width?: string
   }
 
+  declare type ActionType = 'edit' | 'delete'
+
   defineProps({
     headers: {
       type: Array as PropType<TableHeaderConfig[]>,
@@ -41,6 +43,11 @@
       require: false,
       default: 10,
     },
+    action: {
+      type: Array as PropType<ActionType[]>,
+      required: false,
+      default: undefined,
+    },
   })
 </script>
 
@@ -58,6 +65,7 @@
         >
           {{ header.label }}
         </TableHead>
+        <TableHead v-if="action" class="w-[100px] text-right"> Action </TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>

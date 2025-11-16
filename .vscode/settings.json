@@ -13,5 +13,10 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/modules/invoice/locales",
+    "src/modules/overview/locales",
+    "src/modules/admin/user/locales"
+  ]
 }

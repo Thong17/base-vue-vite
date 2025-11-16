@@ -1,7 +1,7 @@
 <template>
   <h1>{{ $t(route.meta.title ?? '') }}</h1>
   <router-link to="/admin/user/create">Create</router-link>
-  <BaseTable :headers="headers" :rows="invoices" :total-count="150" />
+  <BaseTable :headers="headers" :rows="invoices" :action="['edit']" :total-count="150" />
   <router-view />
 </template>
 
